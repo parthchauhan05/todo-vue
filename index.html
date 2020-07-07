@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</head>
+<body>
+  <h1 class="text-center my-2">To Do List</h1>
+ <div id="app">
+  <div class="container my-5 z-depth-1 col-md-6">
+  <ul style="padding-inline-end: 10px;  padding-inline-start: 10px;">
+    <li v-for="(item, index) in todo" class="row py-2 border-bottom">
+      <div class="col-md-9 align-middle" v-if="item.completed">
+        <s class="grey-text"><p class="my-2" @click.prevent="completed2($event)" :data-index="index" style="cursor: pointer;">{{item.title}}</p></s>
+      </div>
+      <div class="col-md-9 align-middle" v-else>
+        <p class="my-2" @click.prevent="completed2($event)" :data-index="index" style="cursor: pointer;">{{item.title}}</p>
+      </div>
+      <div class="col-md-3 text-right">
+        <button class="btn-md px-3 py-2 btn btn-danger rounded" @click.prevent="remove($event)" :data-index="index"><i class="fas fa-trash mx-0 px-0"></i></button>
+      </div>
+      <hr>
+    </li>
+  </ul>
+  </div>
+  <div class="container my-5 z-depth-1 col-md-6">
+    <section class=" text-center px-md-5 py-3">
+      <div class="row">
+        <div class=" mx-auto">
+          <form class="" action="">
+            <h3 class="font-weight-bold mb-4">Add an Item</h3>   
+            <div class="input-group mb-4 pb-3">
+              <input type="text" class="form-control" placeholder="Item" aria-describedby="button-addon2" v-model="title">
+              <div class="input-group-append">
+                <button class="btn btn-md btn-info rounded-right m-0 px-3 py-2 z-depth-0 waves-effect" type="submit" id="button-addon2" @click.prevent="addItem">Add Item</button>
+              </div>
+            </div>   
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
